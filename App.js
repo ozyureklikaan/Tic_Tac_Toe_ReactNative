@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert, Button } from 'react-native';
+import { StyleSheet, Text, View, Alert, Button, TouchableOpacity } from 'react-native';
 import { MaterialComunityIcons as Icon } from 'react-native-vector-icons';
 
 // export default function App() {
@@ -121,39 +121,39 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
         <View style={{flexDirection: "row"}}>
-          <View style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0 }]}>
+          <TouchableOpacity onPress={() => this.onTilePress(0, 0)} style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0 }]}>
             {this.renderIcon(0, 0)}
-          </View>
-          <View style={[styles.tile, { borderTopWidth: 0 }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(0, 1)} style={[styles.tile, { borderTopWidth: 0 }]}>
             {this.renderIcon(0, 1)}
-          </View>
-          <View style={[styles.tile, { borderTopWidth: 0, borderRightWidth: 0 }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(0, 2)} style={[styles.tile, { borderTopWidth: 0, borderRightWidth: 0 }]}>
             {this.renderIcon(0, 2)}
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={{flexDirection: "row"}}>
-          <View style={[styles.tile, { borderLeftWidth: 0 }]}>
+          <TouchableOpacity onPress={() => this.onTilePress(1, 0)} style={[styles.tile, { borderLeftWidth: 0 }]}>
             {this.renderIcon(1, 0)}
-          </View>
-          <View style={[styles.tile, { }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(1, 1)} style={[styles.tile, { }]}>
             {this.renderIcon(1, 1)}
-          </View>
-          <View style={[styles.tile, { borderRightWidth: 0 }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(1, 2)} style={[styles.tile, { borderRightWidth: 0 }]}>
             {this.renderIcon(1, 2)}
-          </View>
+          </TouchableOpacity>
         </View>
         
         <View style={{flexDirection: "row"}}>
-          <View style={[styles.tile, { borderBottomWidth: 0, borderLeftWidth: 0 }]}>
+          <TouchableOpacity onPress={() => this.onTilePress(2, 0)} style={[styles.tile, { borderBottomWidth: 0, borderLeftWidth: 0 }]}>
             {this.renderIcon(2, 0)}
-          </View>
-          <View style={[styles.tile, { borderBottomWidth: 0 }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(2, 1)} style={[styles.tile, { borderBottomWidth: 0 }]}>
             {this.renderIcon(2, 1)}
-          </View>
-          <View style={[styles.tile, { borderBottomWidth: 0, borderRightWidth: 0 }]}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.onTilePress(2, 2)} style={[styles.tile, { borderBottomWidth: 0, borderRightWidth: 0 }]}>
             {this.renderIcon(2, 2)}
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={{paddingTop: 50}}>
