@@ -16,6 +16,10 @@ export default class App extends React.Component {
         [0, 0, 0]
       ],
       currentPlayer: 1,
+      playerOneName: 'X',
+      playerTwoName: 'O',
+      playerOneScore: 0,
+      playerTwoScore: 0
     }
   }
 
@@ -24,7 +28,7 @@ export default class App extends React.Component {
   }
 
   initializeGame = () => {
-    this.setState({gameState:
+    this.setState({ gameState:
       [
         [0, 0, 0],
         [0, 0, 0],
@@ -93,17 +97,31 @@ export default class App extends React.Component {
 
     var winner = this.getWinner();
     if (winner == 1) {
-      Alert.alert("Player 1 (X) is the winner!");
+      var playerOneScore = this.state.playerOneScore + 1;
+      this.setState({ playerOneScore: playerOneScore });
+      Alert.alert(`Player 1 (${this.getPlayerOneName()}) is the winner!`);
       this.initializeGame();
     }
     else if (winner == -1) {
-      Alert.alert("Player 2 (O) is the winner!");
+      var playerTwoScore = this.state.playerTwoScore + 1;
+      this.setState({ playerTwoScore: playerTwoScore });
+      Alert.alert(`Player 2 (${this.getPlayerTwoName()}) is the winner!`);
       this.initializeGame();
     }
   }
 
   onNewGamePress = () => {
     this.initializeGame();
+    this.resetGame();
+  }
+
+  resetGame = () => {
+    this.setState({
+      playerOneName: 'X',
+      playerTwoName: 'O',
+      playerOneScore: 0,
+      playerTwoScore: 0
+    })
   }
 
   renderIcon = (row, col) => {
@@ -118,43 +136,76 @@ export default class App extends React.Component {
     }
   }
 
+  getPlayerOneName = () => {
+    return this.state.playerOneName;
+  }
+
+  getPlayerTwoName = () => {
+    return this.state.playerTwoName;
+  }
+
+  getPlayerOneScore = () => {
+    return this.state.playerOneScore;
+  }
+
+  getPlayerTwoScore = () => {
+    return this.state.playerTwoScore;
+  }
+
   render() {
     return(
       <View style={styles.container}>
 
         <View style={{flexDirection: "row"}}>
+          <View style={[styles.scoreBoard, { borderLeftWidth: 0, borderTopWidth: 0 }]}>
+            <Text style={styles.score}>{ this.getPlayerOneName() }</Text>
+          </View>
+          <View style={[styles.scoreBoard, { borderRightWidth: 0, borderTopWidth: 0 }]}>
+            <Text style={styles.score}>{ this.getPlayerTwoName() }</Text>
+          </View>
+        </View>
+        <View style={{flexDirection: "row"}}>
+          <View style={[styles.scoreBoard, { borderLeftWidth: 0, borderBottomWidth: 0 }]}>
+            <Text style={styles.score}>{ this.getPlayerOneScore() }</Text>
+          </View>
+          <View style={[styles.scoreBoard, { borderRightWidth: 0, borderBottomWidth: 0 }]}>
+            <Text style={styles.score}>{ this.getPlayerTwoScore() }</Text>
+          </View>
+        </View>
+
+        <View style={{flexDirection: "row", marginTop: 50}}>
           <TouchableOpacity onPress={() => this.onTilePress(0, 0)} style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0 }]}>
-            {this.renderIcon(0, 0)}
+            { this.renderIcon(0, 0) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(0, 1)} style={[styles.tile, { borderTopWidth: 0 }]}>
-            {this.renderIcon(0, 1)}
+            { this.renderIcon(0, 1) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(0, 2)} style={[styles.tile, { borderTopWidth: 0, borderRightWidth: 0 }]}>
-            {this.renderIcon(0, 2)}
+            { this.renderIcon(0, 2) }
           </TouchableOpacity>
         </View>
 
         <View style={{flexDirection: "row"}}>
           <TouchableOpacity onPress={() => this.onTilePress(1, 0)} style={[styles.tile, { borderLeftWidth: 0 }]}>
-            {this.renderIcon(1, 0)}
+            { this.renderIcon(1, 0) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(1, 1)} style={[styles.tile, { }]}>
-            {this.renderIcon(1, 1)}
+            { this.renderIcon(1, 1) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(1, 2)} style={[styles.tile, { borderRightWidth: 0 }]}>
-            {this.renderIcon(1, 2)}
+            { this.renderIcon(1, 2) }
           </TouchableOpacity>
         </View>
         
         <View style={{flexDirection: "row"}}>
           <TouchableOpacity onPress={() => this.onTilePress(2, 0)} style={[styles.tile, { borderBottomWidth: 0, borderLeftWidth: 0 }]}>
-            {this.renderIcon(2, 0)}
+            { this.renderIcon(2, 0) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(2, 1)} style={[styles.tile, { borderBottomWidth: 0 }]}>
-            {this.renderIcon(2, 1)}
+            { this.renderIcon(2, 1) }
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.onTilePress(2, 2)} style={[styles.tile, { borderBottomWidth: 0, borderRightWidth: 0 }]}>
-            {this.renderIcon(2, 2)}
+            { this.renderIcon(2, 2) }
           </TouchableOpacity>
         </View>
 
@@ -190,6 +241,18 @@ const styles = StyleSheet.create({
   tileO: {
     color: "green",
     fontSize: 60,
+    textAlign: "center"
+  },
+
+  scoreBoard: {
+    borderWidth: 6,
+    width: 150,
+    height: 75
+  },
+
+  score: {
+    color: "black",
+    fontSize: 40,
     textAlign: "center"
   }
 });
