@@ -110,8 +110,10 @@ export default class App extends React.Component {
     var value = this.state.gameState[row][col];
     switch(value)
     {
-      case 1: return <Icon name="close" style={styles.tileX}></Icon>;
-      case -1: return <Icon name="circle-outline" style={styles.tileO}></Icon>;
+      case 1: return <Text name="close" style={styles.tileX}>X</Text>;
+      case -1: return <Text name="circle-outline" style={styles.tileO}>O</Text>;
+      // case 1: return <Icon name="close" style={styles.tileX}></Icon>;
+      // case -1: return <Icon name="circle-outline" style={styles.tileO}></Icon>;
       default: return <View></View>;
     }
   }
@@ -165,9 +167,6 @@ export default class App extends React.Component {
   }
 }
 
-//   );
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -184,11 +183,13 @@ const styles = StyleSheet.create({
 
   tileX: {
     color: "red",
-    fontSize: 60
+    fontSize: 60,
+    textAlign: "center"
   },
 
   tileO: {
     color: "green",
-    fontSize: 60
+    fontSize: 60,
+    textAlign: "center"
   }
 });
