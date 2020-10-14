@@ -221,7 +221,8 @@ export default class App extends React.Component {
           <Button title="New Game" onPress={this.onNewGamePress}></Button>
         </View>
 
-        <AdMobBanner
+        <AdMobBanner 
+          style={{paddingTop: 20}}
           bannerSize="banner"
           adUnitID={this.bannerAdId}
           servePersonalizedAds={false}  
