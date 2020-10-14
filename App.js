@@ -222,7 +222,7 @@ export default class App extends React.Component {
         </View>
 
         <AdMobBanner 
-          style={{paddingTop: 20}}
+          style={{paddingTop: 10}}
           bannerSize="banner"
           adUnitID={this.bannerAdId}
           servePersonalizedAds={false}  
