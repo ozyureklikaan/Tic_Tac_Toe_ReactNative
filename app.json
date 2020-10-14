@@ -27,7 +27,10 @@
     },
     "android": {
       "package": "com.kaanozyurekli.tictactoe",
-      "permissions": []
+      "permissions": [],
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7126368244915627~3662683342"
+      }
     }
   }
 }

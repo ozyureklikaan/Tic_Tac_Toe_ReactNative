@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Alert, Button, TouchableOpacity, Platform } from 'react-native';
 import { MaterialComunityIcons as Icon } from 'react-native-vector-icons';
+import { AdMobBanner, AdMobInterstitial, PublisherBanner, AdMobRewarded, setTestDeviceIDAsync, } from 'expo-ads-admob';
 
 // export default function App() {
 //   return (
@@ -21,10 +22,17 @@ export default class App extends React.Component {
       playerOneScore: 0,
       playerTwoScore: 0
     }
+
+    this.bannerAdId = Platform.OS === 'ios' ? "" : "ca-app-pub-7126368244915627/1045093018";
+    this.interstitialAdId = Platform.OS === 'ios' ? "" : "";
   }
 
   componentDidMount() {
     this.initializeGame();
+    
+    // AdMobInterstitial.setAdUnitID(this.interstitialAdId);
+    // await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: false });
+    // await AdMobInterstitial.showAdAsync();
   }
 
   initializeGame = () => {
@@ -212,6 +220,12 @@ export default class App extends React.Component {
         <View style={{paddingTop: 50}}>
           <Button title="New Game" onPress={this.onNewGamePress}></Button>
         </View>
+
+        <AdMobBanner
+          bannerSize="banner"
+          adUnitID={this.bannerAdId}
+          servePersonalizedAds={false}  
+        />
 
       </View>
     )
