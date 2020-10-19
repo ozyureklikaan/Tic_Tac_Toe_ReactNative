@@ -8,7 +8,7 @@
       "android",
       "web"
     ],
-    "version": "2.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -28,8 +28,7 @@
     "android": {
       "package": "com.kaanozyurekli.tictactoe",
       "permissions": [],
-      "versionCode": 2,
-      "versionName": "2.0.1",
+      "versionCode": 3,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-7126368244915627~3662683342"
       }
