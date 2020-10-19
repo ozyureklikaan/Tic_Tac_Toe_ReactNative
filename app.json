@@ -29,6 +29,7 @@
       "package": "com.kaanozyurekli.tictactoe",
       "permissions": [],
       "versionCode": 2,
+      "versionName": "2.0.1",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-7126368244915627~3662683342"
       }
